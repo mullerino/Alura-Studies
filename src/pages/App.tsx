@@ -1,3 +1,4 @@
+import Cronometro from "../components/Cronometro"
 import Forms from "../components/Forms"
 import Lista from "../components/Lista"
 import style from './App.module.scss'
@@ -8,6 +9,7 @@ function App() {
     <div className={style.App}>
       <Forms></Forms>
       <Lista></Lista>
+      <Cronometro></Cronometro>
     </div>
   )
 }
