@@ -1,18 +1,13 @@
 import './index.scss'
 
 interface nomeProps{
-    text: string
+    text: string,
+    type?: "button" | "submit" | "reset" | undefined
 }
 
-const Botao = ({text}:nomeProps) =>{
-
-    const addTarefa = (item:any)=>{
-        item.preventDefault()
-        console.log('Tarefa adicionada')
-    }
-    
+const Botao = ({text,type}:nomeProps) =>{
     return(
-        <button className='botao' onClick={addTarefa}>{text}</button>
+        <button className='botao' type={type}>{text}</button>
     )
 }    
 

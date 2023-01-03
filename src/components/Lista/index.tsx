@@ -1,27 +1,16 @@
-import React from "react";
 import './index.scss'
 import Item from "./Item";
+import { listaProps } from "../../types/tarefa";
 
-const Lista = () =>{
 
-    const tarefas = [{
-        tarefa: 'React',
-        tempo: '02:00:00'
-    },
-    {
-        tarefa: 'JavaScript',
-        tempo:'02:00:00'
-    },
-    {
-        tarefa: 'Java',
-        tempo:'01:00:00'
-    }
-    ]
+
+const Lista = ({list}:{list:listaProps[]}) =>{
+
     return (
         <aside className="listaTarefas"> 
             <h2>Estudos do dia</h2>
             <ul>
-                {tarefas.map((tarefas)=>
+                {list.map((tarefas)=>
                     <Item key={tarefas.tarefa} tarefa={tarefas.tarefa} tempo={tarefas.tempo}/>
                 )}
             </ul>
