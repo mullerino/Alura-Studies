@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import Botao from "../Botão"
 import style from './Formulario.module.scss'
 import { listaProps } from "../../types/tarefa"
+import {v4 as uuidv4} from 'uuid'
+
 
 interface formsProps{
     addTarefas: React.Dispatch<React.SetStateAction<listaProps[]>>
@@ -18,8 +20,17 @@ const Forms = ({addTarefas}:formsProps) =>{
 
     const addNewTask = (e:React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
-        console.log('forms submetido', task,time,tarefa)
-        addTarefas(tarefas=>[...tarefas,{...tarefa}])
+        addTarefas(tarefas=>
+            [...tarefas,
+                {
+                    ...tarefa, 
+                    selecionado:false, 
+                    completado:false,
+                    id: uuidv4()
+                }
+            ])
+        setTask('')
+        setTime('00:00')
     }
 
     return (

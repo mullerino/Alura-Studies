@@ -7,11 +7,22 @@ import { listaProps } from "../types/tarefa"
 
 function App() {
   const [tarefas,setTarefas] = useState<listaProps[]>([])
+  const [selecionado,setSelecionado] = useState<listaProps>()
+
+  const selecionarTarefa = (tarefaSelecionada:listaProps)=>{
+    setSelecionado(tarefaSelecionada)
+    setTarefas(tarefasAntigas=> tarefasAntigas.map(tarefa=>({
+      ...tarefa,
+      selecionado: tarefa.id == tarefaSelecionada.id ? true:false
+    })))
+  }
+
+  console.log(selecionado)
 
   return (
     <div className={style.App}>
       <Forms addTarefas={setTarefas}></Forms>
-      <Lista list = {tarefas}></Lista>
+      <Lista list = {tarefas} seleciona = {selecionarTarefa}></Lista>
       <Cronometro></Cronometro>
     </div>
   )
