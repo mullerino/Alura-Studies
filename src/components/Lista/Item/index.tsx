@@ -7,8 +7,6 @@ interface Props extends listaProps{
 
 
 const Item = ({tarefa,tempo,selecionado,completado,id,selecionaTarefa}: Props)=>{
-    console.log('item atual:',{tarefa,tempo,selecionado,completado,id})
-
     const clicked = ()=>{
         selecionaTarefa({
             tarefa,
@@ -17,10 +15,9 @@ const Item = ({tarefa,tempo,selecionado,completado,id,selecionaTarefa}: Props)=>
             completado,
             id
         })
-        console.log()
     }
     return( 
-        <li className={`${style.item} ${selecionado? style.itemSelecionado: ''}`}onClick={clicked}>
+        <li className={`${style.item} ${selecionado? style.itemSelecionado: ''}`} onClick={clicked}>
             <h3>{tarefa}</h3>
             <span>{tempo}</span>
         </li>

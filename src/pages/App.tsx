@@ -17,13 +17,11 @@ function App() {
     })))
   }
 
-  console.log(selecionado)
-
   return (
     <div className={style.App}>
       <Forms addTarefas={setTarefas}></Forms>
       <Lista list = {tarefas} seleciona = {selecionarTarefa}></Lista>
-      <Cronometro></Cronometro>
+      <Cronometro selecionado ={selecionado}></Cronometro>
     </div>
   )
 }
