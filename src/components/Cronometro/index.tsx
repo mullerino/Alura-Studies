@@ -6,11 +6,11 @@ import { listaProps } from "../../types/tarefa"
 import { useEffect, useState } from "react"
 
 interface cronometroProps{
-    selecionado: listaProps | undefined
+    selecionado: listaProps | undefined;
+    finalizada: ()=>void
 }
 
-const Cronometro = ({selecionado}:cronometroProps) =>{
-    //console.log('convertido:', timeToSeconds(selecionado.tempo))
+const Cronometro = ({selecionado, finalizada}:cronometroProps) =>{
     const [tempo,setTempo] = useState<number>()
 
     useEffect(()=>{
@@ -20,13 +20,23 @@ const Cronometro = ({selecionado}:cronometroProps) =>{
     
     }, [selecionado])
 
+    const regressiva = (contador:number = 0)=>{
+        setTimeout(()=>{
+            if(contador>0){
+                setTempo(contador-1)
+                return regressiva(contador-1)
+            }
+            finalizada()
+        },1000)
+    }
+    
     return (
         <div className={style.cronometro}>
             <p className={style.titulo}>Escolha um card e inicie o cronomêtro</p>
             <div className={style.relogioWrapper}>
                 <Relogio tempo={tempo}/>
             </div>
-            <Botao text="Iniciar" type="button"/>
+            <Botao text="Iniciar" type="button" onClick={()=>regressiva(tempo)}/>
         </div>
     )
 }

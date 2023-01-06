@@ -5,6 +5,7 @@ import { listaProps } from "../../types/tarefa";
 interface Props{
     list: listaProps[];
     seleciona: (tarefaSelecionada:listaProps)=> void
+    //finalizar: (tarefaFinalizada: listaProps)=> void
 }
 
 const Lista = ({list, seleciona} : Props) =>{

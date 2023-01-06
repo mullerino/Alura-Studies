@@ -11,8 +11,6 @@ const Relogio= ({tempo = 0} :relogioProps)=>{
     const [minuteDezena,minuteUnidade] = String(minutes).padStart(2,'0')
     const [secondDezena,secondUnidade] = String(seconds).padStart(2,'0')
 
-    console.log('minutos',minuteDezena,minuteUnidade)
-
     return(
         <>
             <span className={style.relogioNumero}>{minuteDezena}</span>
